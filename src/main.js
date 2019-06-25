@@ -7,6 +7,8 @@ import 'amfe-flexible'
 
 import Cube from 'cube-ui'
 
+import './assets/css/base.scss'
+
 Vue.use(Cube)
 
 Vue.config.productionTip = false
