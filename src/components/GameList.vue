@@ -12,7 +12,12 @@
                             <p>{{ item.hostTeamName }}</p>
                         </div>
                     </div>
-                    <div class="mid-score">2</div>
+                    <div class="mid-score">
+                        <span class="status-logo" v-if='item.live'>{{ item.live }}</span>
+                        <span class="order-logo" v-if='item.order'>{{ item.order }}</span>
+                        <div class="team-score" :class="{ end : item.live == '已结束' }">{{ item.hostScore }} - {{ item.guestScore }}</div>
+                        <div class="end-time" v-if='item.live !== "已结束"'>{{ item.endTime }}</div>
+                    </div>
                     <div class="right-team">
                         <div class="team-logo">
                             <img :src="item.guestLogoUrl" alt="">
@@ -114,6 +119,46 @@ import { getData } from '../common/data/game-data'
 
         .mid-score{
             width: 80px;
+
+            .status-logo{
+                display:inline-block;
+                padding: 3px 10px;
+                background-color: #3d8f29;
+                border-radius: 25px;
+                margin-bottom: 7px;
+                color: #fff;
+                font-size: 12px;
+                line-height: 100%;
+            }
+
+            .order-logo{
+                display:inline-block;
+                padding: 3px 20px;
+                background-color: #fff;
+                border-radius: 25px;
+                border: 1px #3d8f29 solid;
+                margin-bottom: 7px;
+                color: #3d8f29;
+                font-size: 12px;
+                line-height: 100%;
+            }
+
+            .team-score{
+                font-size: 14px;
+                margin-top: 5px;
+                font-weight: 500;
+
+                &.end{
+                    font-size: 22px;
+                    color: #878f98;
+                }
+            }
+
+            .end-time{
+                margin-top: 7px;
+                color: #878f98;
+                font-size: 14px;
+            }
         }
 
         .right-team{

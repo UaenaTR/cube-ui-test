@@ -126,6 +126,10 @@
         
         h1{
           padding: 20px 0;
+
+          span{
+            margin-right: 5px;
+          }
         }
         
         .cont-title {
